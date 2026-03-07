@@ -3,8 +3,8 @@ using namespace std;
 
 
 int solve(){
-    int n,m; cin >> n >> m; // n : nb of tickets
-    multiset<int> h; // price of tickets
+    int n,m; cin >> n >> m;
+    multiset<int> h; 
     for(int i = 0; i < n; i++){
         int x;
         cin >> x;
@@ -12,10 +12,10 @@ int solve(){
     }
 
     
-    for(int i = 0; i < m; i++){ // O(m)
+    for(int i = 0; i < m; i++){ 
         int t;
         cin >> t;
-        auto ans = h.upper_bound(t); // O(log(n))
+        auto ans = h.upper_bound(t);
         if ( ans == h.begin()){
             cout << -1 << endl;
         }else{
