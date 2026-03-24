@@ -9,13 +9,16 @@ int solve(){
     }
 
     for (int i = 0; i < n; i++){
-        int count = 0;
+        int countLess = 0;
+        int countGreat = 0;
         for(int j = i + 1; j < n; j++){
-            if(a[i] > a[j] || (a[i] * a[j]) < 0){
-                count++;
+            if(a[i] > a[j]){
+                countLess++;
+            }else if(a[i] < a[j]){
+                countGreat++;
             }
         }
-        cout << count << " ";
+        cout << max(countLess,countGreat) << " ";
     }
     cout << "\n";
     return 0;
