@@ -1,31 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main()
-{
-    int t; cin >> t;
-    while(t--){
-        int n; cin >> n;
-        vector <int> a(2*n - 1,0);
-        vector <int> check(2*n + 1,0);
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                int x; cin >> x;
-                a[i + j] = x;
-                check[a[i + j]] = 1;
-            }
-        }
-        
-        for(int i = 1; i < 2*n + 1; i++){
-            if (check[i] == 0){
-                cout << i << " ";
-            }
-        }
-        for(int &k: a){
-            cout << k << " ";
-        }
-        cout << endl;
-        
-    }
 
-    return 0;
+void solve(){
+    int n; cin >> n;
+    vector<long long> seq;
+    long long k = 2;
+    
+    seq.push_back(k); 
+    while((int)seq.size() < n){
+        long long L = lcm(k, k + 1);
+        seq.push_back(L);         
+        if((int)seq.size() < n){
+            seq.push_back(k + 1);  
+        }
+        k += 2; 
+    }
+    
+    for(int i = 0; i < n; i++)
+        cout << seq[i] << " \n"[i==n-1];
+}
+
+int main(){
+    int t; cin >> t;
+    while(t--) solve();
 }
