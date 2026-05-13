@@ -1,26 +1,35 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-void solve(){
+void solve() {
     int n; cin >> n;
-    vector<long long> seq;
-    long long k = 2;
-    
-    seq.push_back(k); 
-    while((int)seq.size() < n){
-        long long L = lcm(k, k + 1);
-        seq.push_back(L);         
-        if((int)seq.size() < n){
-            seq.push_back(k + 1);  
+    vector <int> a(2*n); for(auto &x : a){cin >> x;}
+
+    vector <int> l(n,-1);
+    int l = 0;
+    int r = 2*n -1;
+
+    int mex = 0;
+    while(l < r){
+        if(a[l] < a[r]){
+            l++;
+        }else if(a[r] > a[l]){
+            l--;
+        }else{
+            l++;
+            r--;
         }
-        k += 2; 
     }
     
-    for(int i = 0; i < n; i++)
-        cout << seq[i] << " \n"[i==n-1];
 }
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
     int t; cin >> t;
-    while(t--) solve();
+    while(t--){
+        solve();
+    }
+    return 0;
 }
